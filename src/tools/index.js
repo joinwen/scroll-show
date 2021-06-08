@@ -41,7 +41,7 @@ const getHeightWithMargin = (ele) => {
   let height = getHeightWithBorder(ele),
     mt = getStyle(ele, "margin-top"),
     mb = getStyle(ele, "margin-bottom");
-  return height + mt + mb;
+  return height + toNumber(mt) + toNumber(mb);
 }
 
 /**
@@ -73,5 +73,5 @@ const getWidthWithMargin = (ele) => {
   let width = getWidthWithBorder(ele),
     ml = getStyle(ele, "margin-left"),
     mr = getStyle(ele,"margin-right");
-  return width + ml + mr;
+  return width + toNumber(ml) + toNumber(mr);
 }
