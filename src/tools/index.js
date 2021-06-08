@@ -99,3 +99,28 @@ const pageX = (ele) => {
   }
   return x;
 }
+
+/**
+ *
+ * 获取在 target 元素里的 clientX
+ * @param target 相对的坐标系统
+ * @param src
+ */
+const clientX = (target, src) => {
+  let srcX = pageX(src),
+    targetX = pageX(target),
+    scrollX = target.offsetLeft || 0; // 没有滚动 scrollX = 0
+  return srcX - targetX - scrollX;
+}
+
+/**
+ * 获取在 target 元素里的 clientY
+ * @param target
+ * @param src
+ */
+const clientY = (target, src) => {
+  let srcY = pageY(src),
+    targetY = pageY(target),
+    scrollY = target.scrollTop || 0;     // 没有滚动 scrollY = 0
+  return srcY - targetY - scrollY;
+}
