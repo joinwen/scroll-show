@@ -75,3 +75,27 @@ const getWidthWithMargin = (ele) => {
     mr = getStyle(ele,"margin-right");
   return width + toNumber(ml) + toNumber(mr);
 }
+
+/**
+ * 获取元素的 pageY
+ */
+const pageY = (ele) => {
+  let y = 0;
+  while(ele.offsetParent) {
+    y += ele.offsetTop;
+    ele = ele.offsetParent;
+  }
+  return y;
+}
+
+/**
+ * 获取元素的 pageX
+ */
+const pageX = (ele) => {
+  let x = 0;
+  while(ele.offsetParent) {
+    x += ele.offsetLeft;
+    ele = ele.offsetParent;
+  }
+  return x;
+}
