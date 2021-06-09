@@ -8,7 +8,11 @@
    * 获取 dom 属性
    */
   const getStyle = (ele, attr) => {
-    return document.defaultView.getComputedStyle(ele)[attr];
+    try{
+      return document.defaultView.getComputedStyle(ele)[attr];
+    }catch (e) {
+      return 0;
+    }
   };
 
   /**
@@ -16,23 +20,6 @@
    */
   const toNumber = (str) => {
     return Number.parseInt(str);
-  };
-
-  /**
-   * 获取 高度 + 内边距 + 边框
-   */
-  const getHeightWithBorder = (ele) => {
-    return ele.offsetHeight;
-  };
-
-  /**
-   * 获取 高度 + 内边距 + 边框 + 外边距
-   */
-  const getHeightWithMargin = (ele) => {
-    let height = getHeightWithBorder(ele),
-      mt = getStyle(ele, "margin-top"),
-      mb = getStyle(ele, "margin-bottom");
-    return height + toNumber(mt) + toNumber(mb);
   };
 
   /**
@@ -61,21 +48,44 @@
 
   const defaultOptions = {
     wrapped: null,
-    child: null
+    child: null,
+    border: true,
+    forward: 0,
+    cb: () => {}
   };
   const removeBorder = (wrapped, y) => {
     let bt = getStyle(wrapped, "border-top");
     return y - toNumber(bt);
   };
 
+  const judgeY = (y, options) => {
+    let wrapped = options.wrapped,
+      child = options.child,
+      callback = options.cb,
+      border = options.border,
+      forward = options.forward;
+    y += forward;
+    if(y <= 0) {
+      let newY = y + (border ? child.offsetHeight : child.clientHeight);
+      console.log(newY);
+      if(newY > 0) {
+        callback(child, true);
+      } else {
+        callback(child, false);
+      }
+    } else {
+      if(y <= (wrapped.clientHeight) && y >= 2 * forward) {
+        callback(child, true);
+      } else {
+        callback(child, false);
+      }
+    }
+  };
   const scrollShow = (options) => {
     options = Object.assign(defaultOptions, options);
-    let wrapped = options.wrapped,
-      child = options.child;
-    let y = clientY(wrapped, child),
-      childHeight = getHeightWithMargin(child);
-    y = removeBorder(wrapped, y);
-    return [y, childHeight];
+    let y = clientY(options.wrapped, options.child);
+    y = removeBorder(options.wrapped, y);       // wrapped 元素的 border 宽度会计算进去，在这里减掉
+    judgeY(y, options);
   };
 
   return scrollShow;
