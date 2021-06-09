@@ -1,0 +1,28 @@
+{
+  "name": "scroll-show",
+  "version": "1.0.0",
+  "description": "滚动元素在视口可见",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c --environment BUILD:production",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joinwen/scroll-show.git"
+  },
+  "keywords": [
+    "scroll",
+    "view"
+  ],
+  "author": "cywen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joinwen/scroll-show/issues"
+  },
+  "homepage": "https://github.com/joinwen/scroll-show#readme",
+  "devDependencies": {
+    "rollup": "^2.51.1"
+  }
+}

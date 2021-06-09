@@ -102,7 +102,7 @@ const pageX = (ele) => {
 
 /**
  *
- * 获取在 target 元素里的 clientX
+ * 获取 src 在 target 元素里的 clientX
  * @param target 相对的坐标系统
  * @param src
  */
@@ -114,7 +114,7 @@ const clientX = (target, src) => {
 }
 
 /**
- * 获取在 target 元素里的 clientY
+ * 获取 src 在 target 元素里的 clientY
  * @param target
  * @param src
  */
@@ -123,4 +123,21 @@ const clientY = (target, src) => {
     targetY = pageY(target),
     scrollY = target.scrollTop || 0;     // 没有滚动 scrollY = 0
   return srcY - targetY - scrollY;
+}
+
+export {
+  clientX,
+  clientY,
+  getHeight,
+  getHeightWithPadding,
+  getHeightWithBorder,
+  getHeightWithMargin,
+  getWidth,
+  getWidthWithPadding,
+  getWidthWithBorder,
+  getWidthWithMargin,
+  pageX,
+  pageY,
+  getStyle,
+  toNumber
 }
