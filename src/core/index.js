@@ -4,6 +4,7 @@ const defaultOptions = {
   wrapped: null,
   child: null,
   border: true,
+  forward: 0,
   cb: () => {}
 }
 const removeBorder = (wrapped, y) => {
@@ -15,7 +16,9 @@ const judgeY = (y, options) => {
   let wrapped = options.wrapped,
     child = options.child,
     callback = options.cb,
-    border = options.border;
+    border = options.border,
+    forward = options.forward;
+  y -= forward;
   if(y <= 0) {
     let newY = y + (border ? child.offsetHeight : child.clientHeight);
     console.log(newY);
