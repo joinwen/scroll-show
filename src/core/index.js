@@ -28,7 +28,7 @@ const judgeY = (y, options) => {
       callback(child, false);
     }
   } else {
-    if(y <= (wrapped.clientHeight) && y >= 2*forward) {
+    if(y <= (wrapped.clientHeight) && y >= 2 * forward) {
       callback(child, true);
     } else {
       callback(child, false);

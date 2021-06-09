@@ -64,13 +64,13 @@
   var box2 = document.querySelector(".box2");
   var box3 = document.querySelector(".box3");
 
-  wrapped.addEventListener("scroll",(e) => {
-    let childList = e.target.children;
+  function check() {
+    let childList = wrapped.children;
     [...childList].forEach(child => {
       scrollShow({
         wrapped: wrapped,
         child: child,
-        forward: 100,
+        forward: -100,
         cb: (child, res) => {
           if(res) {
             child.style.backgroundColor = "blue";
@@ -80,6 +80,10 @@
         }
       })
     })
+  }
+  check();
+  wrapped.addEventListener("scroll",(e) => {
+    check();
   })
 </script>
 </body>
