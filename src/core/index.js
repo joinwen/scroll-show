@@ -18,7 +18,7 @@ const judgeY = (y, options) => {
     callback = options.cb,
     border = options.border,
     forward = options.forward;
-  y -= forward;
+  y += forward;
   if(y <= 0) {
     let newY = y + (border ? child.offsetHeight : child.clientHeight);
     console.log(newY);
@@ -28,7 +28,7 @@ const judgeY = (y, options) => {
       callback(child, false);
     }
   } else {
-    if(y <= wrapped.clientHeight && y >= 0) {
+    if(y <= (wrapped.clientHeight) && y >= 2*forward) {
       callback(child, true);
     } else {
       callback(child, false);
