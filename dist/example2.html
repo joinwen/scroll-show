@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="scroll-show.umd.js"></script>
+  <title>Example 2</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      line-height: 2;
+      text-align: center;
+    }
+    html,body {
+      height: 100%;
+    }
+    .box {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <h2>世界末日</h2>
+  <p>
+    想笑 来伪装掉下的眼泪
+  </p>
+  <p>
+    点点头 承认自己会怕黑
+  </p>
+  <p>
+    我只求 能借一点的时间来陪
+  </p>
+  <p>
+    你却连 同情都不给
+  </p>
+  <p>
+    想哭 来试探自己麻痹了没
+  </p>
+  <p>
+    全世界 好像只有我疲惫
+  </p>
+  <p>
+    无所谓 反正难过就敷衍走一回
+  </p>
+  <p>
+    但愿绝望和无奈远走高飞
+  </p>
+  <p>
+    天灰灰 会不会
+  </p>
+  <p>
+    让我忘了你是谁
+  </p>
+  <p>
+    夜越黑 梦违背
+  </p>
+  <p>
+    难追难回味
+  </p>
+  <p>
+    我的世界将被摧毁
+  </p>
+  <p>
+    也许事与愿违
+  </p>
+  <p>
+    累不累 睡不睡
+  </p>
+  <p>
+    单影无人相依偎
+  </p>
+  <p>
+    夜越黑 梦违背
+  </p>
+  <p>
+    有谁肯安慰
+  </p>
+  <p>
+    我的世界将被摧毁
+  </p>
+  <p>
+    也许颓废也是
+  </p>
+  <p>
+    想哭 来试探自己麻痹了没
+  </p>
+  <p>
+    全世界 好像只有我疲惫
+  </p>
+  <p>
+    无所无所谓 反正难过就敷衍走一回
+  </p>
+  <p>
+    但愿绝望和无奈远走高飞
+  </p>
+  <p>
+    天灰灰 会不会
+  </p>
+  <p>
+    让我忘了你是谁
+  </p>
+  <p>
+    夜越黑 梦违背
+  </p>
+  <p>
+    难追难回味
+  </p>
+  <p>
+    我的世界将被摧毁
+  </p>
+  <p>
+    也许事与愿违
+  </p>
+  <p>
+    累不累 睡不睡
+  </p>
+  <p>
+    单影无人相依偎
+  </p>
+  <p>
+    夜越黑 梦违背
+  </p>
+  <p>
+    难追难回味
+  </p>
+  <p>
+    我的世界将被摧毁
+  </p>
+  <p>
+    也许颓废也是 另一种美
+  </p>
+  <p>
+    【谢谢】
+  </p>
+  <p>
+    制作人：周杰伦
+  </p>
+  <p>
+    Guitar：蔡科俊、林正如
+  </p>
+  <p>
+    Bass：陈任佑
+  </p>
+  <p>
+    Keyboard：蔡朝华、洪筠惠
+  </p>
+  <p>
+    Drums：童志伟
+  </p>
+  <p>
+    打击：宋辅仁
+  </p>
+  <p>
+    合声编写：周杰伦
+  </p>
+  <p>
+    合声：罗添洲、凌伟文、郑知明、姚国强
+  </p>
+  <p>
+    录音工程：杨大纬
+  </p>
+</div>
+<script>
+  var box = document.querySelector(".box");
+  box.addEventListener("scroll", (e) => {
+    let childList = document.querySelector(".box").children;
+    [...childList].forEach(child => {
+      scrollShow({
+        wrapped: box,
+        child: child,
+        forward: 200,
+        cb: (child, res) => {
+          if(res) {
+            child.style.color = "red";
+          } else {
+            child.style.color = "black";
+          }
+        }
+      })
+    })
+  })
+</script>
+</body>
+</html>

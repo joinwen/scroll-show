@@ -2,7 +2,11 @@
  * 获取 dom 属性
  */
 const getStyle = (ele, attr) => {
-  return document.defaultView.getComputedStyle(ele)[attr];
+  try{
+    return document.defaultView.getComputedStyle(ele)[attr];
+  }catch (e) {
+    return 0;
+  }
 }
 
 /**
