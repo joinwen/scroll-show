@@ -3,7 +3,10 @@
 ```
 npm i scroll-show --save-dev
 ```
-
+## 预览
+```
+https://joinwen.github.io/scroll-show/example2.html
+```
 ## 使用
 - ### 基础
 wrapped: 父元素
