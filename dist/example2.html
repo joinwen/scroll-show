@@ -170,8 +170,8 @@
 </div>
 <script>
   var box = document.querySelector(".box");
-  box.addEventListener("scroll", (e) => {
-    let childList = document.querySelector(".box").children;
+  function check() {
+    let childList = box.children;
     [...childList].forEach(child => {
       scrollShow({
         wrapped: box,
@@ -186,6 +186,10 @@
         }
       })
     })
+  }
+  check();
+  box.addEventListener("scroll", (e) => {
+    check();
   })
 </script>
 </body>
