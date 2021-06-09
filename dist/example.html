@@ -5,46 +5,79 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Example</title>
   <script src="./scroll-show.umd.js"></script>
+  <title>Example</title>
   <style>
     * {
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
-    .wrapped {
-      width: 600px;
-      height: 200px;
+    body {
       margin: 100px;
       padding: 100px;
-      border: 10px solid black;
-      background-color: cornsilk;
+      border: 10px solid green;
+    }
+    .wrapped {
+      width: 800px;
+      background-color: antiquewhite;
+      height: 500px;
+      margin: 100px;
+      padding: 100px;
       overflow: auto;
+      border: 10px solid yellowgreen;
     }
     .box {
       width: 200px;
-      height: 200px;
-      margin: 100px;
+      height: 700px;
+      margin: 80px;
       padding: 100px;
-      border: 10px solid yellowgreen;
       background-color: red;
+      border: 10px solid black;
     }
     .box2 {
-      width: 200px;
-      height: 200px;
+      height: 500px;
       background-color: red;
+    }
+    .box3 {
+      height: 800px;
+      background-color: blueviolet;
     }
   </style>
 </head>
 <body>
-  <div class="wrapped">
-    <div class="box"></div>
-    <div class="box2"></div>
+<div class="wrapped">
+  <div class="box">
+    900
   </div>
-  <script>
-    var wrapped = document.querySelector(".wrapped");
-    var box = document.querySelector(".box");
+  <div class="box2">
+    500
+  </div>
+  <div class="box3">
+    800
+  </div>
+</div>
+<script>
+  var wrapped = document.querySelector(".wrapped");
+  var box = document.querySelector(".box");
+  var box2 = document.querySelector(".box2");
+  var box3 = document.querySelector(".box3");
 
-  </script>
+  wrapped.addEventListener("scroll",(e) => {
+    let childList = e.target.children;
+    [...childList].forEach(child => {
+      scrollShow({
+        wrapped: wrapped,
+        child: child,
+        cb: (child, res) => {
+          if(res) {
+            child.style.backgroundColor = "blue";
+          } else {
+            child.style.backgroundColor = "white";
+          }
+        }
+      })
+    })
+  })
+</script>
 </body>
 </html>
