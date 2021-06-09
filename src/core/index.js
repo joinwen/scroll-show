@@ -1,4 +1,4 @@
-import {clientY, getHeightWithMargin, getStyle, pageY, toNumber} from "../tools/index";
+import {clientY, getStyle, toNumber} from "../tools/index";
 
 const defaultOptions = {
   wrapped: null,
