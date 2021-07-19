@@ -36,7 +36,7 @@ ele：进入视口的元素
 
 res: true 进入 | false 进出
 
-status: 1 | 2
+status: 1:向上移动的趋势 | 2：向下移动的趋势
 ```
   scrollShow({
   wrapped: document.querySelector(".wrapped"),

@@ -13,7 +13,7 @@ const getStyle = (ele, attr) => {
  * 字符串转数字
  */
 const toNumber = (str) => {
-  return ~~Number.parseInt(str);
+  return Number.parseInt(str);
 }
 
 /**
@@ -83,7 +83,10 @@ const getWidthWithMargin = (ele) => {
 /**
  * 获取元素的 pageY
  */
-const pageY = (ele) => {
+const pageY = (ele, bcr) => {
+  if(bcr) {
+    return ele.getBoundingClientRect()["y"];
+  }
   let y = 0;
   while(ele.offsetParent) {
     y += ele.offsetTop;
@@ -95,7 +98,10 @@ const pageY = (ele) => {
 /**
  * 获取元素的 pageX
  */
-const pageX = (ele) => {
+const pageX = (ele, bcr) => {
+  if(bcr) {
+    return ele.getBoundingClientRect()["x"];
+  }
   let x = 0;
   while(ele.offsetParent) {
     x += ele.offsetLeft;
@@ -110,11 +116,11 @@ const pageX = (ele) => {
  * @param target 相对的坐标系统
  * @param src
  */
-const clientX = (target, src) => {
-  let srcX = pageX(src),
-    targetX = pageX(target),
+const clientX = (target, src, bcr) => {
+  let srcX = pageX(src, bcr),
+    targetX = pageX(target, bcr),
     scrollX = target.offsetLeft || 0; // 没有滚动 scrollX = 0
-  return srcX - targetX - scrollX;
+  return bcr ? srcX - targetX : srcX - targetX - scrollX;
 }
 
 /**
@@ -122,11 +128,11 @@ const clientX = (target, src) => {
  * @param target
  * @param src
  */
-const clientY = (target, src) => {
-  let srcY = pageY(src),
-    targetY = pageY(target),
+const clientY = (target, src, bcr) => {
+  let srcY = pageY(src, bcr),
+    targetY = pageY(target, bcr),
     scrollY = target.scrollTop || 0;     // 没有滚动 scrollY = 0
-  return srcY - targetY - scrollY;
+  return bcr ? srcY - targetY : srcY - targetY - scrollY;
 }
 
 export {

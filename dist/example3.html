@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./scroll-show.umd.js"></script>
+  <title>Img Lazy Loading</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    html,body {
+      height: 100%;
+    }
+    .wrapped {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: auto;
+      background-color: aliceblue;
+    }
+    .wrapped > div {
+      flex: 1 1 100%;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapped">
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+    <div>
+      <img src="./loading.gif" lazy-src="./黑桃A.jpg" alt="">
+    </div>
+  </div>
+  <script>
+    let wrapped = document.querySelector(".wrapped");
+    function lazyLoad() {
+      let childList = wrapped.children;
+      [...childList].forEach(item => {
+        scrollShow({
+          wrapped: wrapped,
+          child: item,
+          cbY: function(child, res) {
+            if(res) {
+              let img = child.firstElementChild;
+              setTimeout(() => {
+                img.setAttribute("src", img.getAttribute("lazy-src"));
+              }, Math.random() * 5000)
+            }
+          }
+        })
+      })
+    }
+    lazyLoad();
+    wrapped.addEventListener("scroll", function() {
+      console.log("hi");
+      lazyLoad();
+    })
+  </script>
+</body>
+</html>

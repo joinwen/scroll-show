@@ -178,8 +178,9 @@
         scrollShow({
           wrapped: box,
           child: child,
-          forward: 150,
-          cb: function(child, res){
+          top: 100,
+          bottom: 300,
+          cbY: function(child, res){
             if(res) {
               child.style.color = "#46baf8";
             } else {
