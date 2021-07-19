@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      padding: 100px;
+      margin: 10px;
+      border: 20px solid black;
+    }
+    .box2 {
+      position: absolute;
+      padding: 100px;
+      margin: 10px;
+      border: 20px solid black;
+    }
+    .box3 {
+      position: absolute;
+      padding: 100px;
+      margin: 10px;
+      border: 20px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+  <script>
+
+    var box1 = document.querySelector(".box");
+    var box2 = document.querySelector(".box2");
+    var box3 = document.querySelector(".box3");
+
+    /**
+     * 获取元素的 pageY
+     * 这个获取的值，不精确，没有 border
+     */
+    const pageY = (ele) => {
+      let y = 0;
+      while(ele.offsetParent) {
+        y += ele.offsetTop;
+        ele = ele.offsetParent;
+      }
+      return y;
+    }
+
+    /**
+     * 获取元素的 pageX
+     * 这个获取值，不精确，没有 border
+     */
+    const pageX = (ele) => {
+      let x = 0;
+      while(ele.offsetParent) {
+        x += ele.offsetLeft;
+        ele = ele.offsetParent;
+      }
+      return x;
+    }
+  </script>
+</body>
+</html>

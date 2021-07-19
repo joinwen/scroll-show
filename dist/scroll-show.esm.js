@@ -13,7 +13,7 @@ const getStyle = (ele, attr) => {
  * 字符串转数字
  */
 const toNumber = (str) => {
-  return Number.parseInt(str);
+  return ~~Number.parseInt(str);
 };
 
 /**

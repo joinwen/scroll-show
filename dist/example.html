@@ -27,17 +27,17 @@
       height: 700px;
       margin: 80px auto;
       padding: 100px;
-      border: 10px solid black;
+      border: 30px solid black;
     }
     .box2 {
       height: 500px;
       margin: 10px auto;
-      border: 10px solid black;
+      border: 30px solid black;
     }
     .box3 {
       height: 800px;
       margin: 10px auto;
-      border: 10px solid black;
+      border: 30px solid black;
     }
   </style>
 </head>
@@ -358,7 +358,8 @@
       scrollShow({
         wrapped: wrapped,
         child: child,
-        forward: -100,
+        forward: 0,
+        border: false,
         cb: (child, res) => {
           if(res) {
             child.style.color = "yellowgreen";

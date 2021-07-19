@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .box {
+      width: 60%;
+      margin: 0 auto;
+    }
+    .box2 {
+      height: 310px;
+      border: 1px solid yellowgreen;
+      overflow: auto;
+      margin: 20px;
+      padding: 50px;
+      position: relative;
+    }
+    .box31,.box32,.box33 {
+      width: 100px;
+      height: 100px;
+      padding: 40px;
+      margin: 60px;
+      border: 5px solid black;
+    }
+    .box31 {
+    }
+    .box32  {
+    }
+    .box33 {
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box2">
+      <div class="box31"></div>
+      <div class="box32"></div>
+      <div class="box33"></div>
+    </div>
+    <script>
+      let box31 = document.querySelector(".box31");
+      let box32 = document.querySelector(".box32");
+      let box33 = document.querySelector(".box33");
+      let box2 = document.querySelector(".box2");
+
+
+      const cssValue = (ele, attr) => document.defaultView.getComputedStyle(ele)[attr];
+      const pl = (ele) => Number.parseInt(cssValue(ele, "padding-left"));
+      const pt = (ele) => Number.parseInt(cssValue(ele,"padding-top"));
+      const ml = (ele) => Number.parseInt(cssValue(ele,"margin-left"));
+      const mt = (ele) => Number.parseInt(cssValue(ele, "margin-top"));
+
+
+      const innerPosition = (ele) => {
+        let parent = ele.offsetParent,
+          plV = pl(parent),
+          ptV = pt(parent),
+          mlV = ml(ele),
+          mtV = mt(ele),
+          x1 = ele.offsetLeft,
+          y1 = ele.offsetTop,
+          x2 = x1 - plV,
+          y2 = y1 - ptV,
+          x3 = x2 - mlV,
+          y3 = y2 - mtV;
+        return [
+          [x1,x2,x3],
+          [y1,y2,y3]
+        ]
+      }
+    </script>
+  </div>
+</body>
+</html>
