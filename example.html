@@ -6,7 +6,7 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="./scroll-show.umd.js"></script>
-  <title>Example</title>
+  <title>Example Test</title>
   <style>
     * {
       padding: 0;
@@ -27,17 +27,17 @@
       height: 700px;
       margin: 80px auto;
       padding: 100px;
-      border: 10px solid black;
+      border: 30px solid black;
     }
     .box2 {
       height: 500px;
       margin: 10px auto;
-      border: 10px solid black;
+      border: 30px solid black;
     }
     .box3 {
       height: 800px;
       margin: 10px auto;
-      border: 10px solid black;
+      border: 30px solid black;
     }
   </style>
 </head>
@@ -358,8 +358,12 @@
       scrollShow({
         wrapped: wrapped,
         child: child,
-        forward: -100,
-        cb: (child, res) => {
+        wLevel: 1,
+        cLevel: 2,
+        forward: 0,
+        border: false,
+        cbY: (child, res, status) => {
+          console.log(status, child);
           if(res) {
             child.style.color = "yellowgreen";
           } else {

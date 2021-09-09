@@ -169,28 +169,40 @@
   </p>
 </div>
 <script>
-  var box = document.querySelector(".box");
+  var box = document.getElementsByClassName("box")[0];
   function check() {
-    let childList = box.children;
-    [...childList].forEach(child => {
-      scrollShow({
-        wrapped: box,
-        child: child,
-        forward: 150,
-        cb: (child, res) => {
-          if(res) {
-            child.style.color = "#46baf8";
-          } else {
-            child.style.color = "black";
+    var childList = box.children;
+    for(var i = 0; i < childList.length; i++) {
+      (function() {
+        var child = childList[i];
+        scrollShow({
+          wrapped: box,
+          child: child,
+          top: 100,
+          bottom: 300,
+          cbY: function(child, res){
+            if(res) {
+              child.style.color = "#46baf8";
+            } else {
+              child.style.color = "black";
+            }
           }
-        }
-      })
-    })
+        })
+      })(i);
+    }
   }
   check();
-  box.addEventListener("scroll", (e) => {
-    check();
-  })
+  if(box.addEventListener) {
+    box.addEventListener("scroll", function(e) {
+      check();
+    })
+  } else {
+    box.attachEvent("scroll", function(e) {
+      check();
+    })
+  }
+
+
 </script>
 </body>
 </html>
