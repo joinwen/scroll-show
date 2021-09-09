@@ -7,6 +7,8 @@ npm i scroll-show --save-dev
 
 [https://joinwen.github.io/scroll-show/example2.html](https://joinwen.github.io/scroll-show/example2.html)
 
+[图片懒加载](https://joinwen.github.io/scroll-show/example3.html)
+
 ## 使用
 - ### 基础
 wrapped: 父元素
